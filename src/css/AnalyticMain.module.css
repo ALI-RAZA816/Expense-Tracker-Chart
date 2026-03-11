@@ -1,0 +1,147 @@
+.analyticMain{
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 9fr 3fr;
+}
+
+.left{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 180px);
+}
+
+.amountBox{
+    display: flex;
+    background-color:#171C29;
+    border: 1.5px solid #efefef2f;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border, transform .50s ease-in-out;
+}
+
+.amountBox > div{
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+.amountBox > div:first-child{
+    width: 60%;
+    display: flex;
+    padding-left: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.amountBox > div:last-child{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.amountBox div:first-child span{
+    color: #efefefd7;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.amountBox div:first-child h2{
+    color: #fff;
+    font-weight: bold;
+    font-size: 2.1rem;
+    margin: .8rem 0;
+}
+
+.amountBox div:first-child p{
+    color: #efefef42;
+    text-transform: lowercase;
+    font-size: 13px;
+    font-weight: 450;
+}
+
+.amountBox:first-child > div:last-child{
+    background-color: #152F34;
+}
+
+.amountBox:first-child:hover{
+    border-color: #00E396;
+    transform: translateY(-2px);
+}
+
+.amountBox:nth-child(2) > div:last-child{
+    background-color: #452839;
+}
+.amountBox:nth-child(2):hover{
+    border-color: #FF6384;
+    transform: translateY(-2px);
+}
+
+.amountBox:nth-child(3) > div:last-child{
+    background-color: #2E2F50;
+}
+
+.amountBox:nth-child(3):hover{
+    border-color: #9B87F5;
+    transform: translateY(-2px);
+}
+
+.chartContainer{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color:#171C29;
+    border: 1.5px solid #efefef2f;
+}
+
+.tophead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tophead h3{
+    background: linear-gradient(135deg, #d3ceeb 0%, #7C6AE4 100%);
+    background-clip: text;
+    --webkit-background-clip: text;
+    font-size: 1.6rem;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.tophead div{
+    height: 45px;
+    background-color:#242937;
+    width: max-content;
+    border-radius: 100px;
+    border: 1px solid #efefef2f;
+    display: flex;
+    padding: .2rem .4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.tophead div button{
+    height: 35px;
+    width: max-content;
+    border: #00E396;
+    outline: none;
+    background: none;
+    border-radius: 100px;
+    color: #efefef;
+    font-size: 13px;
+    font-weight: 550;
+    padding: 0 .8rem;
+}
+
+.tophead div button:first-child{
+    background: #7C6AE4;
+    margin-right: .5rem;
+}
