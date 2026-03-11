@@ -1,6 +1,6 @@
 .analyticMain{
     display: grid;
-    gap: 50px;
+    gap: 40px;
     grid-template-columns: 9fr 3fr;
 }
 
@@ -94,7 +94,7 @@
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 2;
-    grid-row-end: 5;
+    grid-row-end: 4;
     padding: 2rem;
     border-radius: 15px;
     background-color:#171C29;
@@ -144,4 +144,51 @@
 .tophead div button:first-child{
     background: #7C6AE4;
     margin-right: .5rem;
+}
+
+.actualChart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transaction{
+    background-color: #171C29;
+    border: 1px solid #efefef2f;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.transaction form input::placeholder{
+    color: #8A94A6;
+    font-weight: 550;
+}
+.transaction form input{
+    height: 45px;
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    border:1px solid #efefef2f;
+    margin-bottom: 1rem;
+    background: #242937;
+    padding: 0 .8rem;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 450;
+}
+
+.transaction h2{
+    margin-bottom: .8rem;
+    background:linear-gradient(135deg, #fff 0%, #193f8d 100%) ;
+    --webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
 }
