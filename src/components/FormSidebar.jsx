@@ -1,81 +1,11 @@
-import style from '../css/AnalyticMain.module.css';
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { FaScaleBalanced } from "react-icons/fa6";
-import { Pie, PieChart, Tooltip, Legend} from 'recharts';
+import style from '../css/FormSidebar.module.css';
 import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 
-const data01 = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
-
-const isAnimationActive = true;
-const defaultIndex = 0;
-
-export default function AnalyticMain() {
+export default function FormSidebar() {
   return (
-    <div className={style.analyticMain}>
-      <div className={style.left}>
-            <div className={style.amountBox}>
-                <div>
-                    <span>Income</span>
-                    <h2>$2,250</h2>
-                    <p>This month</p>
-                </div>
-                <div><FaArrowUp style={{color:"#00E396",fontSize:"1.5rem"}} /></div>
-            </div>
-            <div className={style.amountBox}>
-                <div>
-                    <span>Expense</span>
-                    <h2>$2,250</h2>
-                    <p>This month</p>
-                </div>
-                <div><FaArrowDown style={{color:"#FF6384",fontSize:"1.5rem"}} /></div>
-            </div>
-            <div className={style.amountBox}>
-                <div>
-                    <span>Balance</span>
-                    <h2>$2,250</h2>
-                    <p>Net worth</p>
-                </div>
-                <div><FaScaleBalanced style={{color:"9B87F5",fontSize:"1.5rem"}} /></div>
-            </div>
-            <div className={style.chartContainer}>
-                <div className={style.tophead}>
-                    <h3>Analytics</h3>
-                    <div>
-                        <button>Expenses</button>
-                        <button>Income vs Expense</button>
-                    </div>
-                </div>
-                <div className={style.actualChart}>
-                    <PieChart
-                        style={{ width: '100%', height: '100%', maxWidth: '500px', maxHeight: '35vh', aspectRatio: 1 }}
-                        responsive
-                        >
-                        <Pie
-                            data={data01}
-                            dataKey="value"
-                            cx="50%"
-                            cy="50%"
-                            innerRadius="50%"
-                            outerRadius="80%"
-                            fill="#82ca9d"
-                            // label
-                            isAnimationActive={isAnimationActive}
-                        />
-                        <Legend/>
-                        <Tooltip defaultIndex={defaultIndex} />
-                    </PieChart>
-                </div>
-            </div>
-            progress
-      </div>
-      <div className={style.right}>
-        <div className={style.transaction}>
+    <>
+     <div className={style.transaction}>
             <h2>Add Transaction</h2>
             <form action="">
                 <input type="text" placeholder='Description' />
@@ -140,8 +70,7 @@ export default function AnalyticMain() {
                     </select>
                 </div>
             </div>
-        </div>
-      </div>
-    </div>
+        </div> 
+    </>
   )
 }

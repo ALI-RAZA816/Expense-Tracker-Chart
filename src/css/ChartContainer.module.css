@@ -1,0 +1,61 @@
+.chartContainer{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color:#171C29;
+    border: 1.5px solid #efefef2f;
+}
+
+.tophead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tophead h3{
+    background: linear-gradient(135deg, #d3ceeb 0%, #7C6AE4 100%);
+    background-clip: text;
+    --webkit-background-clip: text;
+    font-size: 1.6rem;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.tophead div{
+    height: 45px;
+    background-color:#242937;
+    width: max-content;
+    border-radius: 100px;
+    border: 1px solid #efefef2f;
+    display: flex;
+    padding: .2rem .4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.tophead div button{
+    height: 35px;
+    width: max-content;
+    border: #00E396;
+    outline: none;
+    background: none;
+    border-radius: 100px;
+    color: #efefef;
+    font-size: 13px;
+    font-weight: 550;
+    padding: 0 .8rem;
+}
+
+.tophead div button:first-child{
+    background: #7C6AE4;
+    margin-right: .5rem;
+}
+
+.actualChart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

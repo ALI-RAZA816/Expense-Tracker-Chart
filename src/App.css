@@ -12,3 +12,24 @@ body{
   font-family: "Inter", sans-serif;
   padding: 0 1rem;
 }
+
+.analyticMain{
+    display: grid;
+    gap: 40px;
+    margin-top: 30px;
+    grid-template-columns: 9fr 3fr;
+}
+
+.left{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 180px);
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
