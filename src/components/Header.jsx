@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className={style.header}>
         <div className={style.left}>
-            <h1><FaWallet className={style.wallet} style={{color:"#00C689",fontSize:"2rem"}} /> WealthWise</h1>
+            <h1><FaWallet className={style.wallet} style={{color:"#00C689",fontSize:"2rem",marginRight:".8rem"}} /> WealthWise</h1>
         </div>
         <div className={style.right}>
             <button><AiOutlineStock style={{marginRight:".5rem",color:"#7C6AE4",fontSize:"1.2rem"}}  /> <span>Smart Budgeting</span></button>

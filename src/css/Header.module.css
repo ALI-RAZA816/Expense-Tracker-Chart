@@ -49,12 +49,12 @@
 }
 
 .wallet{
-    animation: updown 1s linear 0s infinite;
+    animation: updown 2s linear 0s infinite;
 }
 
 @keyframes updown {
     0%,100%{
-        transform: translateY(2px);
+        transform: translateY(5px);
     }
     50%{
         transform: translateY(-2px);
