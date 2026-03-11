@@ -1,0 +1,62 @@
+.header{
+    height: 100px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1E2332;
+    border: 1.5px solid #efefef2f;
+    margin-top: 1.3rem;
+    padding: 0 1.5rem;
+}
+
+.left h1{
+    background: linear-gradient(135deg, #00E396 0%, #00C689 100%);
+    --webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.4rem;
+    letter-spacing: .5px;
+}
+
+.right{
+    display: flex;
+}
+
+.right button{
+    height: 40px;
+    border-radius: 100px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #efefefa1;
+    width: max-content;
+    border: 1px solid #efefef25 ;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .50s ease-in-out;
+}
+
+.right button:hover{
+    transform: translateY(-2px);
+    border-color: #7C6AE4;
+}
+
+.right button:first-child{
+    margin-right: 1rem;
+}
+
+.wallet{
+    animation: updown 1s linear 0s infinite;
+}
+
+@keyframes updown {
+    0%,100%{
+        transform: translateY(2px);
+    }
+    50%{
+        transform: translateY(-2px);
+    }
+}
