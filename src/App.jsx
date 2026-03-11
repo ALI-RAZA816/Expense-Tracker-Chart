@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 // import recharts from "recharts";
-import AnalyticMain from './components/AnalyticMain';
+// import AnalyticMain from './components/AnalyticMain';
 import Cards from './components/Cards';
 import ChartContainer from './components/ChartContainer';
 import FormSidebar from './components/FormSidebar';
