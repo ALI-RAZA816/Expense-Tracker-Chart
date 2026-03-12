@@ -4,6 +4,7 @@ import Cards from './components/Cards';
 import ChartContainer from './components/ChartContainer';
 import FormSidebar from './components/FormSidebar';
 import Progress from './components/Progress';
+import TransactionRecords from './components/TransactionRecords';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           </div>
         </section>
       </main>
+      <TransactionRecords/>
     </>
   )
 }

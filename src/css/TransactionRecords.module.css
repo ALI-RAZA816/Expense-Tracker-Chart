@@ -1,0 +1,72 @@
+.transactionContainer{
+    background-color: #171C29;
+    border: 1px solid #efefef2f;
+    border-radius: 15px;
+    margin-top: 1.5rem;
+    padding: 2rem 1.5rem;
+}
+
+.records h2{
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.records ul li{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    /* border: 1px solid red; */
+    list-style-type: none;
+    background: #242937;
+    padding: 2rem 1.5rem;
+    border: 1px solid #efefef2f;
+}
+
+.records ul li p:first-child{
+    display: flex;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.records ul li p button{
+    height: 30px;
+    padding: 0 1rem;
+    width: max-content;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    background: #393C52;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: .5rem;
+    color: #9B87F5;
+}
+
+.records ul li p:last-child span{
+    color: #B8C0CC;
+    font-size: 12px;
+}
+
+.records ul li div:last-child span:nth-child(2),
+.records ul li div:last-child span:nth-child(3){
+    height: 40px;
+    width: 40px;
+    display:flex;
+    border-radius: 100%;
+    background-color: #171C29;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity .50s ease;
+}
+
+.records ul li:hover div:last-child span:nth-child(2),
+.records ul li:hover div:last-child span:nth-child(3){
+    opacity: 1;
+}

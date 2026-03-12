@@ -40,11 +40,26 @@
 }
 
 .progressBar{
-    height: 15px;
+    height: 12px;
     border-radius: 100px;
     width: 100%;
+    position: relative;
+    overflow: hidden;
     background: #242937;
     border: 1.5px solid #efefef2f;
+}
+
+.progressBar:after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    border-radius: 100px;
+    transform: translate(-50%, -50%);
+    background-color: #00C689;
+    border: 1.5px solid #03d690;
 }
 
 .progressContainter > div:last-child{
