@@ -1,13 +1,28 @@
+import { useState } from 'react';
 import style from '../css/ChartContainer.module.css'
-import { Pie, PieChart, Tooltip, Legend} from 'recharts';
+import {BarChart, XAxis, YAxis, CartesianGrid, Bar, Pie, PieChart, Tooltip, Legend} from 'recharts';
+
 
 export default function ChartContainer() {
+
+    const [isActive, setActive] = useState(false);
+
+    const showExpensesChartHandler = ()=>{
+        setActive(false);
+    }
+    const showExpensesandIncomeChartHandler = ()=>{
+        setActive(true);
+    }
     
     const data01 = [
       { name: 'Group A', value: 400 },
       { name: 'Group B', value: 300 },
       { name: 'Group C', value: 300 },
       { name: 'Group D', value: 200 },
+    ];
+    const data = [
+      { name: "expense", value: 5000 },
+      { name: "income", value: 400 }
     ];
     
     const isAnimationActive = true;
@@ -18,13 +33,13 @@ export default function ChartContainer() {
         <div className={style.tophead}>
             <h3>Analytics</h3>
             <div>
-                <button>Expenses</button>
-                <button>Income vs Expense</button>
+                <button className={isActive === false ? `${style.active}` : undefined} onClick={showExpensesChartHandler}>Expenses</button>
+                <button className={isActive === true ? `${style.active}` : undefined} onClick={showExpensesandIncomeChartHandler}>Income vs Expense</button>
             </div>
         </div>
         <div className={style.actualChart}>
-            <PieChart
-                style={{ width: '100%', height: '100%', maxWidth: '500px', maxHeight: '35vh', aspectRatio: 1 }}
+            { isActive === false ? <PieChart
+                style={{ width: '100%', height: '100%', maxWidth: '500px', maxHeight: '60vh', aspectRatio: 1 }}
                 responsive
                 >
                 <Pie
@@ -40,7 +55,15 @@ export default function ChartContainer() {
                 />
                 <Legend/>
                 <Tooltip defaultIndex={defaultIndex} />
-            </PieChart>
+            </PieChart>:
+            <BarChart style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', top:"50px", aspectRatio: 1.618 }} responsive data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name"/>
+                <YAxis dataKey="value" width="auto" />
+                <Tooltip />
+                <Bar dataKey="value"  fill="#82ca9d" isAnimationActive={isAnimationActive} />
+                {/* <Legend dataKey="value"/> */}
+            </BarChart>}
         </div>
     </div>
   )

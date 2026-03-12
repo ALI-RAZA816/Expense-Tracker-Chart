@@ -1,8 +1,6 @@
 .chartContainer{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 4;
+    grid-column: 1 / 4;
+    grid-row: 2 / span 3;
     padding: 2rem;
     border-radius: 15px;
     background-color:#171C29;
@@ -44,15 +42,21 @@
     background: none;
     border-radius: 100px;
     color: #efefef;
+    cursor: pointer;
     font-size: 13px;
     font-weight: 550;
     padding: 0 .8rem;
 }
 
 .tophead div button:first-child{
-    background: #7C6AE4;
     margin-right: .5rem;
 }
+
+.active{
+    background: #7C6AE4 !important;
+    box-shadow: 0 0 20px rgba(124, 106, 228,.80)
+}
+
 
 .actualChart{
     display: flex;

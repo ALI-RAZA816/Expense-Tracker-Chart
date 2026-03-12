@@ -1,12 +1,10 @@
 .progress{
     background-color: #171C29;
     border: 1px solid #efefef2f;
-    grid-column-start:1;
-    grid-column-end:4;
+    grid-column:1 / 4;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     padding: 0 1.5rem;
 }
