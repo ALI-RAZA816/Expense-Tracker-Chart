@@ -12,6 +12,10 @@
     font-size: 1.3rem;
 }
 
+.records ul li:hover{
+    border-color: #9B87F5;
+}
+
 .records ul li{
     height: 100px;
     display: flex;
@@ -21,6 +25,7 @@
     /* border: 1px solid red; */
     list-style-type: none;
     background: #242937;
+    transition: border .50s ease;
     padding: 2rem 1.5rem;
     border: 1px solid #efefef2f;
 }
