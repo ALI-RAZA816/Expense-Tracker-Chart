@@ -1,0 +1,69 @@
+.progress{
+    background-color: #171C29;
+    border: 1px solid #efefef2f;
+    grid-column-start:1;
+    grid-column-end:4;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+.progress h2{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem ;
+}
+
+.progress h2 button{
+    height: 35px;
+    width: max-content;
+    border-radius: 100px;
+    color: #00C689;
+    padding: 0 1rem;
+    font-weight: 550;
+    font-size: 15px;
+    background-color: rgba(0, 227, 150,.10);
+    border: 1.5px solid #03d690;
+}
+
+.progressContainter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #efefef2f;
+}
+
+.progressBar{
+    height: 15px;
+    border-radius: 100px;
+    width: 100%;
+    background: #242937;
+    border: 1.5px solid #efefef2f;
+}
+
+.progressContainter > div:last-child{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* .progress div:last-child, */
+.progressContainter > div:last-child span{
+    color: #B8C0CC;
+    font-size: 15px;
+    font-weight: 550;
+    margin: .8rem 0;
+}
+
+.progress div span{
+    color: #B8C0CC;
+    font-size: 15px;
+    font-weight: 550;
+    margin-top: .5rem;
+}
