@@ -1,8 +1,21 @@
 import style from '../css/FormSidebar.module.css';
 import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
+import { useState } from 'react';
 
 export default function FormSidebar() {
+
+    const [isExpenses, setExpenses] = useState("Expenses");
+    const [isActive, setActive] = useState("all");
+
+    const transactionTypeHandler = (value) =>{
+        setExpenses(value)
+    }
+
+    const filterButtonHandler = (value) =>{
+        setActive(value);
+    }
+
   return (
     <>
      <div className={style.transaction}>
@@ -12,12 +25,12 @@ export default function FormSidebar() {
                 <input type="number" placeholder='Amount' />
                 <div className={style.selection}>
                     <div style={{width:"100%"}}>
-                        <select name="" id="">
-                            <option selected value="Expense">Expense</option>
+                        <select name="" id="" onChange={(event)=> transactionTypeHandler(event.target.value)}>
+                            <option selected value="Expenses">Expense</option>
                             <option value="Income">Income</option>
                         </select>
                     </div>
-                    <div style={{width:"100%"}}>
+                    {isExpenses === "Expenses" ? <div style={{width:"100%"}}>
                         <select name="" id="">
                             <option selected disabled value="">Select catag</option>
                             <option value="Housing">Housing</option>
@@ -30,7 +43,16 @@ export default function FormSidebar() {
                             <option value="Education">Eduction</option>
                             <option value="Other">Other</option>
                         </select>
-                    </div>
+                    </div>:
+                    <div style={{width:"100%"}}>
+                        <select name="" id="">
+                            <option selected disabled value="">Select catag</option>
+                            <option value="Housing">Salary</option>
+                            <option value="Transporation">Freelance</option>
+                            <option value="Food">Investment</option>
+                            <option value="Utilities">Other</option>
+                        </select>
+                    </div>}
                 </div>
                 <button type='submit'><FaPlus /><span>Add Transaction</span></button>
             </form>
@@ -40,9 +62,9 @@ export default function FormSidebar() {
             <div>
                 <span>Type</span>
                 <div style={{display:"flex",gap:"20px",margin:"2rem 0 3rem 0"}}>
-                    <button>All</button>
-                    <button>Income</button>
-                    <button>Expenses</button>
+                    <button className={isActive === 'all' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('all')}>All</button>
+                    <button className={isActive === 'income' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('income')}>Income</button>
+                    <button className={isActive === 'expenses' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('expenses')}>Expenses</button>
                 </div>
             </div>
             <div>

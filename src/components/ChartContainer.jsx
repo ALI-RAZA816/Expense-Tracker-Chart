@@ -56,7 +56,7 @@ export default function ChartContainer() {
                 <Legend/>
                 <Tooltip defaultIndex={defaultIndex} />
             </PieChart>:
-            <BarChart style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', top:"50px", aspectRatio: 1.618 }} responsive data={data}>
+            <BarChart style={{ width: '100%', maxHeight: '60vh', top:"50px", aspectRatio: 1 }} responsive data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name"/>
                 <YAxis dataKey="value" width="auto" />
