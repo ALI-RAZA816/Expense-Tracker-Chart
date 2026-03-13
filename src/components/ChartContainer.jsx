@@ -20,11 +20,12 @@ export default function ChartContainer() {
       { name: 'Group C', value: 300 },
       { name: 'Group D', value: 200 },
     ];
+
     const data = [
       { name: "expense", value: 5000 },
       { name: "income", value: 400 }
     ];
-    
+
     const isAnimationActive = true;
     const defaultIndex = 0;
 
@@ -62,7 +63,7 @@ export default function ChartContainer() {
                 <YAxis dataKey="value" width="auto" />
                 <Tooltip />
                 <Bar dataKey="value"  fill="#82ca9d" isAnimationActive={isAnimationActive} />
-                {/* <Legend dataKey="value"/> */}
+                {/* <Legend/> */}
             </BarChart>}
         </div>
     </div>
