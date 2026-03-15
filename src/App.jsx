@@ -9,28 +9,28 @@ import {useState} from 'react';
 
 function App() {
 
-
+  // date 
   const date = new Date();
   const months = ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
-
+  // static budget
   let budget = 5000;
   const [transaction, setTransaction] = useState([]);
   const [type, setType] = useState('Expenses'); // expenses || income
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
-
   // total expenses
-  const totalExpense = transaction.reduce((item, curr) => {
+  const ExpenseRecord = transaction.filter(item => item.type === 'Expenses');
+  const totalExpense = ExpenseRecord.reduce((item, curr) => {
     return item + curr.amount;
   },0);
-
+  // difference
   budget = budget - totalExpense;
-
+  // progress
   let progress = (totalExpense / 5000) * 100;
-  console.log(progress);
-
+  // expense || income
   const changeTypeHandler = (value) => setType(value);
+  // add transactions
   const addTransactionHandler = (event) =>{
     event.preventDefault();
     const newTransaction = [...transaction,{
@@ -43,9 +43,12 @@ function App() {
     setTransaction(newTransaction);
   }
 
-  console.log(transaction)
-
-
+  // filter income record
+  const IncomeRecord = transaction.filter(item => item.type === 'Income');
+  const totalIncome = IncomeRecord.reduce((item, curr) => {
+    return item + curr.amount;
+  },0);
+  let balance = totalIncome - totalExpense;
 
   return (
     <>
@@ -53,7 +56,7 @@ function App() {
       <main>
         <section className="analyticMain">
           <div className="left">
-            <Cards totalExpense = {totalExpense}/>
+            <Cards totalExpense = {totalExpense} totalIncome = {totalIncome} balance = {balance}/>
             <ChartContainer/>
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
@@ -62,7 +65,7 @@ function App() {
           </div>
         </section>
       </main>
-      <TransactionRecords transaction={transaction}/>
+      <TransactionRecords transaction={transaction} type={type}/>
     </>
   )
 }

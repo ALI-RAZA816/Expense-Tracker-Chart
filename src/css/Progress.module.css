@@ -59,7 +59,7 @@
     border-radius: 100px;
     background-color: #00C689;
     border: 1.5px solid #03d690;
-    transition: width 10s ease;
+    transition: width 1s ease;
 }
 
 /* totalExense < 5000 */

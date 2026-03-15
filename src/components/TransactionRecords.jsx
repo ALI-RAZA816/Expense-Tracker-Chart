@@ -3,20 +3,20 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 
-export default function TransactionRecords({transaction}) {
+export default function TransactionRecords({transaction, type}) {
   return (
     <div className={style.transactionContainer}>
         <div className={style.records}>
             <h2>Recent Transactions </h2>
             <ul>
                 {transaction.map((item, index) => {
-                    return   <li key={index} style={{marginBottom:"1rem"}}>
+                    return   <li className={item.type === 'Expenses' ? `${style.red}`:`${style.green}`} key={index} style={{marginBottom:"1rem"}}>
                                 <div>
-                                <p className='title'><span>{item.description}</span></p>
-                                <p><button>{item.category}</button><span className='date'>{item.date}</span></p>
+                                    <p className='title'><span>{item.description}</span></p>
+                                    <p><button>{item.category}</button><span className='date'>{item.date}</span></p>
                                 </div>
                                 <div style={{display:"flex",alignItems:"center"}}>
-                                    <span className='amount' style={{color:"#FF6384",fontSize:"1.3rem",fontWeight:"bold"}}>$ {item.amount}</span>
+                                    <span className={item.type === 'Expenses' ? `${style.amountRed}`:`${style.greencolor}`} style={{fontSize:"1.3rem",fontWeight:"bold"}}>$ {item.amount}</span>
                                     <span style={{margin:"0 .8rem"}}><FaEdit style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                     <span><MdDelete style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                 </div>

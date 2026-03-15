@@ -27,7 +27,39 @@
     background: #242937;
     transition: border .50s ease;
     padding: 2rem 1.5rem;
+    overflow: hidden;
+    position: relative;
     border: 1px solid #efefef2f;
+}
+
+
+.records ul li:hover{
+    transform: scaleZ(1.1);
+}
+
+.records ul li::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8px;
+    opacity: 0;
+    transition: opacity .50s ease;
+}
+
+.records ul li:hover:after{
+    opacity: 1;
+}
+
+/* custom bgcolor classes */
+.red::after{
+    background-color: #e72c55 !important;
+  
+}
+.green::after{
+    background-color: #00C689 !important;
+  
 }
 
 .records ul li p:first-child{
@@ -74,4 +106,13 @@
 .records ul li:hover div:last-child span:nth-child(2),
 .records ul li:hover div:last-child span:nth-child(3){
     opacity: 1;
+}
+
+
+ /* custom classes */
+.amountRed{
+    color: #e72c55 !important;
+}
+.greencolor{
+    color: #00C689 !important;
 }
