@@ -1,21 +1,23 @@
 import { FaTrophy } from "react-icons/fa";
+import { CiWarning } from "react-icons/ci";
 import style from '../css/Progress.module.css';
 
 
-export default function Progress({budget}) {
+export default function Progress({budget ,totalExpense, progress}) {
+
   return (
     <div className={style.progress}>
-      <h2><span>Monthly Budget Progress</span><button><FaTrophy style={{marginRight:".5rem"}}/>On Track</button></h2>
+      <h2><span>Monthly Budget Progress</span>{totalExpense < 5000 ? <button><FaTrophy style={{marginRight:".5rem"}}/>On Track</button> :<button style={{background:"rgba(255, 79, 111,.20)",color:"#FF6384",border:"1px solid #FF6384"}} ><CiWarning style={{marginRight:".5rem",fontSize:"1.1rem"}}/>Over Budget!</button>}</h2>
       <div className={style.progressContainter}>
-            <div className={style.progressBar}></div>
+            <div className={`${style.progressBar} ${totalExpense < 5000 ? `${style.green_progress}` : `${style.red_progress}`}`} style={{'--progress-width' : progress + '%'}}></div>
             <div>
-                <span>Spent: $1500</span>
-                <span>Budget: $ {budget}</span>
+                <span>Spent: $ {totalExpense}</span>
+                <span>Budget: $ 5000</span>
             </div>
       </div>
       <div style={{display:"flex",justifyContent:"space-between"}}>
-        <span>Remaining:</span>
-        <span style={{color:"#00C689"}}>$3,500</span>
+        <span>Remaining: </span>
+        <span style={{color:"#00C689"}}>$ {budget}</span>
       </div>
     </div>
   )

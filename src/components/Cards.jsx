@@ -2,7 +2,7 @@ import style from '../css/Cards.module.css';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { FaScaleBalanced } from "react-icons/fa6";
 
-export default function Cards() {
+export default function Cards({totalExpense}) {
   return (
     <>
       <div className={style.amountBox}>
@@ -16,7 +16,7 @@ export default function Cards() {
         <div className={style.amountBox}>
             <div>
                 <span>Expense</span>
-                <h2>$2,250</h2>
+                <h2>$ {totalExpense}</h2>
                 <p>This month</p>
             </div>
             <div><FaArrowDown style={{color:"#FF6384",fontSize:"1.5rem"}} /></div>
