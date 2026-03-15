@@ -1,0 +1,15 @@
+.NoRecords{
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    background: #242937;
+    border: 1.5px dotted #8A94A6;
+}
+
+.NoRecords > h2{
+    margin-bottom: 0 !important;
+    color: #8A94A6;
+}

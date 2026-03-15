@@ -1,6 +1,7 @@
 import style from '../css/TransactionRecords.module.css'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import NoRecords from './NoRecords';
 
 
 export default function TransactionRecords({transaction, type}) {
@@ -8,7 +9,7 @@ export default function TransactionRecords({transaction, type}) {
     <div className={style.transactionContainer}>
         <div className={style.records}>
             <h2>Recent Transactions </h2>
-            <ul>
+            {transaction.length ===0 ?<NoRecords/> :<ul>
                 {transaction.map((item, index) => {
                     return   <li className={item.type === 'Expenses' ? `${style.red}`:`${style.green}`} key={index} style={{marginBottom:"1rem"}}>
                                 <div>
@@ -20,9 +21,9 @@ export default function TransactionRecords({transaction, type}) {
                                     <span style={{margin:"0 .8rem"}}><FaEdit style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                     <span><MdDelete style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                 </div>
-                            </li> 
+                            </li>
                 })}
-            </ul>
+            </ul>}
         </div>
     </div>
   )
