@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 import { useState } from 'react';
 
-export default function FormSidebar({}) {
+export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler}) {
 
 
     const [isActive, setActive] = useState("all");
@@ -15,19 +15,19 @@ export default function FormSidebar({}) {
     <>
      <div className={style.transaction}>
             <h2>Add Transaction</h2>
-            <form>
-                <input type="text" placeholder='Description' />
-                <input type="number" placeholder='Amount' />
+            <form action='' onSubmit={addTransactionHandler}>
+                <input type="text" onInput={(event) => setDescription(event.target.value)} value={description} placeholder='Description' />
+                <input type="number" onInput={(event) => setAmount(event.target.value)} value={amount} placeholder='Amount' />
                 <div className={style.selection} >
                     <div style={{width:"100%"}}>
-                        <select name="" id="" >
-                            <option selected value="Expenses">Expense</option>
+                        <select name="" id="" value={type} onChange={(event)=> changeTypeHandler(event.target.value)} >
+                            <option value="Expenses">Expense</option>
                             <option value="Income">Income</option>
                         </select>
                     </div>
-                    <div style={{width:"100%"}}>
-                        <select name="" id="">
-                            <option selected disabled value="">Select catag</option>
+                    {type === "Expenses" ?<div style={{width:"100%"}}>
+                        <select name="" id="" onChange={(event)=> setCategory(event.target.value)} value={category}>
+                            <option value="">Select catag</option>
                             <option value="Housing">Housing</option>
                             <option value="Transporation">Transporation</option>
                             <option value="Food">Food</option>
@@ -38,16 +38,16 @@ export default function FormSidebar({}) {
                             <option value="Education">Eduction</option>
                             <option value="Other">Other</option>
                         </select>
-                    </div>
+                    </div> :
                     <div style={{width:"100%"}}>
-                        <select name="" id="">
-                            <option selected value= "" disabled>Select catag</option>
-                            <option value="Housing">Salary</option>
-                            <option value="Transporation">Freelance</option>
-                            <option value="Food">Investment</option>
-                            <option value="Utilities">Other</option>
+                        <select name="" id="" onChange={(event)=> setCategory(event.target.value)} value={category}>
+                            <option value="">Select catag</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Investment">Investment</option>
+                            <option value="Other">Other</option>
                         </select>
-                    </div>
+                    </div>}
                 </div>
                 <button type='submit'><FaPlus /><span>Add Transaction</span></button>
             </form>

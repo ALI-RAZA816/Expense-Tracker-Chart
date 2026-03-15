@@ -10,16 +10,29 @@ import {useState} from 'react';
 function App() {
 
 
-  const months = ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
   const date = new Date();
+  const months = ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
 
   const budget = 5000;
-  const [transactions, setTransactions] = useState([]);
-  const [Desc, setDesc] = useState('');
-  const [Amount, setAmount] = useState('');
-  const [Type, setType] = useState('Expenses');
-  const [Category, setCategory] = useState('');
- 
+  const [transaction, setTransaction] = useState([]);
+  const [type, setType] = useState('Expenses');
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('');
+
+
+  const changeTypeHandler = (value) => setType(value);
+  const addTransactionHandler = (event) =>{
+    event.preventDefault();
+    const newTransaction = [...transaction,{
+      description: description,
+      amount: amount,
+      type: type,
+      category: category,
+      date: date.getDate() +  " " + months[date.getMonth()]
+    }]
+    setTransaction(newTransaction);
+  }
 
   return (
     <>
@@ -32,7 +45,7 @@ function App() {
             <Progress budget = {budget}/>
           </div>
           <div className="right">
-            <FormSidebar/>
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler}/>
           </div>
         </section>
       </main>
