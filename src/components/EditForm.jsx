@@ -1,23 +1,23 @@
 import { FaPlus } from "react-icons/fa6";
 import style from '../css/EditForm.module.css';
 
-export default function ConfirmBox() {
+export default function ConfirmBox({type, changeTypeHandler, editDescription, editAmount, editCategory, setEditDescription ,setEditAmount, setEditCategory, editItem}) {
   return (
     <div className={style.editContainer}>
         <div className={style.editForm}>
         <h2>Update Transaction</h2>
-            <form action=''>
-                <input type="text" placeholder='Description' />
-                <input type="number" placeholder='Amount' />
+            <form action='' onSubmit={editItem}>
+                <input type="text" onChange={(event)=> setEditDescription(event.target.value)} value={editDescription} placeholder='Description' />
+                <input type="number" onChange={(event)=> setEditAmount(event.target.value)} value={editAmount} placeholder='Amount' />
                 <div className={style.selection} >
                     <div style={{width:"100%"}}>
-                        <select name="" id="">
+                        <select name="" id="" value={type} onChange={(event)=> changeTypeHandler(event.target.value)}>
                             <option value="Expenses">Expense</option>
                             <option value="Income">Income</option>
                         </select>
                     </div>
-                    <div style={{width:"100%"}}>
-                        <select name="" id="">
+                    {type === 'Expenses' ? <div style={{width:"100%"}}>
+                        <select name="" id="" onChange={(event)=> setEditCategory(event.target.value)} value={editCategory}>
                             <option value="">Select catag</option>
                             <option value="Housing">Housing</option>
                             <option value="Transporation">Transporation</option>
@@ -29,16 +29,16 @@ export default function ConfirmBox() {
                             <option value="Education">Eduction</option>
                             <option value="Other">Other</option>
                         </select>
-                    </div>
+                    </div>:
                     <div style={{width:"100%"}}>
-                        <select name="" id="">
+                        <select name="" id="" onChange={(event)=> setEditCategory(event.target.value)} value={editCategory}>
                             <option value="">Select catag</option>
                             <option value="Salary">Salary</option>
                             <option value="Freelance">Freelance</option>
                             <option value="Investment">Investment</option>
                             <option value="Other">Other</option>
                         </select>
-                    </div>
+                    </div>}
                 </div>
                 <button type='submit'><FaPlus style={{marginRight:".5rem"}}  /><span>Edit Transaction</span></button>
             </form>

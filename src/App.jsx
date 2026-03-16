@@ -14,6 +14,7 @@ function App() {
   // date 
   const date = new Date();
   const months = ["Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+
   // static budget
   let budget = 5000;
   const [transaction, setTransaction] = useState([]);
@@ -23,18 +24,25 @@ function App() {
   const [category, setCategory] = useState('');
   const [activeBox, setActiveBox] = useState(false);
   const [itemIndex, setItemIndex] = useState(null);
+  const [isEdit, setEdit] = useState(false);
+
+  // edit states
+  const [editDescription, setEditDescription] = useState('');
+  const [editAmount, setEditAmount] = useState('');
+  const [editCategory, setEditCategory] = useState('');
 
   // total expenses
   const ExpenseRecord = transaction.filter(item => item.type === 'Expenses');
   const totalExpense = ExpenseRecord.reduce((item, curr) => {
     return item + curr.amount;
   },0);
-  // difference
+
+  // budget difference | budget progress | changeType = Expenses | Income
   budget = budget - totalExpense;
-  // progress
   let progress = (totalExpense / 5000) * 100;
-  // expense || income
   const changeTypeHandler = (value) => setType(value);
+
+
   // add transactions
   const addTransactionHandler = (event) =>{
     event.preventDefault();
@@ -47,6 +55,11 @@ function App() {
       date: date.getDate() +  " " + months[date.getMonth()]
     }]
     setTransaction(newTransaction);
+    setDescription("");
+    setAmount("");
+    setType("");
+    setCategory("");
+
   }
 
   // filter income record
@@ -58,7 +71,6 @@ function App() {
 
 
   // show confrim box
-  
   const showConfirmBox = (id) => {
     setActiveBox(true);
     setItemIndex(id);
@@ -69,12 +81,37 @@ function App() {
     setActiveBox(false);
   }
   
+  // delete item
   const deleteItem = () => {
     const updatedTransaction = transaction.filter(item => item.id !== itemIndex);
     setTransaction(updatedTransaction);
     setActiveBox(false);
   }
-  
+
+  // show Edit form
+  const showEditForm = (index) => {
+    setEdit(true);
+    setItemIndex(index);
+    setType(transaction[index].type);
+    setEditDescription(transaction[index].description);
+    setEditAmount(transaction[index].amount);
+    setEditCategory(transaction[index].category);
+  }
+
+  const editItem = (event) => {
+    event.preventDefault();
+    transaction[itemIndex].type = type
+    transaction[itemIndex].description = editDescription
+    transaction[itemIndex].amount = Number(editAmount);
+    transaction[itemIndex].category = editCategory
+    setEdit(false);
+    setType("");
+    setEditDescription("");
+    setEditAmount("");
+    setEditCategory("");
+  }
+
+
   return (
     <>
       <header style={{padding:"0 1rem"}}>
@@ -91,10 +128,10 @@ function App() {
             <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler}/>
           </div>
         </section>
-      <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox}/>
+      <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
       </main>
       {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
-      <EditForm/>
+      {isEdit === true && <EditForm type = {type} changeTypeHandler = {changeTypeHandler} editDescription = {editDescription} editAmount ={editAmount} editCategory = {editCategory} setEditDescription ={setEditDescription} setEditAmount = {setEditAmount} setEditCategory ={setEditCategory} editItem = {editItem} />}
     </>
   )
 }
