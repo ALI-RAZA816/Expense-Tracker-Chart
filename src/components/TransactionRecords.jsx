@@ -17,7 +17,7 @@ export default function TransactionRecords({transaction, showConfirmBox, showEdi
                                     <p><button>{item.category}</button><span className='date'>{item.date}</span></p>
                                 </div>
                                 <div style={{display:"flex",alignItems:"center"}}>
-                                    <span className={item.type === 'Expenses' ? `${style.amountRed}`:`${style.greencolor}`} style={{fontSize:"1.3rem",fontWeight:"bold"}}>$ {item.amount}</span>
+                                    <span className={item.type === 'Expenses' ? `${style.amountRed}`:`${style.greencolor}`} style={{fontSize:"1.3rem",fontWeight:"bold"}}>$ {item.amount.toLocaleString()}</span>
                                     <span style={{margin:"0 .8rem"}}><FaEdit onClick={()=> showEditForm(index)} style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                     <span><MdDelete onClick={()=>showConfirmBox(item.id)} style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                 </div>

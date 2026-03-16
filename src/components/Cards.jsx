@@ -8,7 +8,7 @@ export default function Cards({totalExpense, totalIncome, balance}) {
       <div className={style.amountBox}>
             <div>
                 <span>Income</span>
-                <h2>$ {totalIncome}</h2>
+                <h2>$ {totalIncome.toLocaleString()}</h2>
                 <p>This month</p>
             </div>
             <div><FaArrowUp style={{color:"#00E396",fontSize:"1.5rem"}} /></div>
@@ -16,7 +16,7 @@ export default function Cards({totalExpense, totalIncome, balance}) {
         <div className={style.amountBox}>
             <div>
                 <span>Expense</span>
-                <h2>$ {totalExpense}</h2>
+                <h2>$ {totalExpense.toLocaleString()}</h2>
                 <p>This month</p>
             </div>
             <div><FaArrowDown style={{color:"#FF6384",fontSize:"1.5rem"}} /></div>
@@ -24,7 +24,7 @@ export default function Cards({totalExpense, totalIncome, balance}) {
         <div className={style.amountBox}>
             <div>
                 <span>Balance</span>
-                <h2>$ {balance}</h2>
+                <h2>$ {balance.toLocaleString()}</h2>
                 <p>Net worth</p>
             </div>
             <div><FaScaleBalanced style={{color:"9B87F5",fontSize:"1.5rem"}} /></div>

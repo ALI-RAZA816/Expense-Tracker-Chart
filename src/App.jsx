@@ -65,7 +65,7 @@ function App() {
     setTransaction(newTransaction);
     setDescription("");
     setAmount("");
-    setType("");
+    setType("Expenses");
     setCategory("");
 
   }
@@ -113,7 +113,7 @@ function App() {
     transaction[itemIndex].amount = Number(editAmount);
     transaction[itemIndex].category = editCategory
     setEdit(false);
-    setType("");
+    setType("Expenses");
     setEditDescription("");
     setEditAmount("");
     setEditCategory("");
