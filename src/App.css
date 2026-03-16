@@ -12,6 +12,10 @@ body{
   font-family: "Inter", sans-serif;
 }
 
+body.close{
+  overflow: hidden;
+}
+
 .analyticMain{
     display: grid;
     gap: 40px;

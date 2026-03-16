@@ -5,7 +5,7 @@ import ChartContainer from './components/ChartContainer';
 import FormSidebar from './components/FormSidebar';
 import Progress from './components/Progress';
 import TransactionRecords from './components/TransactionRecords';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import ConfirmBox from './components/ConfirmBox';
 import EditForm from './components/EditForm';
 
@@ -25,6 +25,14 @@ function App() {
   const [activeBox, setActiveBox] = useState(false);
   const [itemIndex, setItemIndex] = useState(null);
   const [isEdit, setEdit] = useState(false);
+
+  useEffect(()=>{
+    if(activeBox === true || isEdit === true){
+      document.body.classList.add('close');
+    }else{
+      document.body.classList.remove('close');
+    }
+  },[activeBox, isEdit])
 
   // edit states
   const [editDescription, setEditDescription] = useState('');
