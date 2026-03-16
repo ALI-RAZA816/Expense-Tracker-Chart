@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import NoRecords from './NoRecords';
 
 
-export default function TransactionRecords({transaction, type}) {
+export default function TransactionRecords({transaction, showConfirmBox}) {
   return (
     <div className={style.transactionContainer}>
         <div className={style.records}>
@@ -19,7 +19,7 @@ export default function TransactionRecords({transaction, type}) {
                                 <div style={{display:"flex",alignItems:"center"}}>
                                     <span className={item.type === 'Expenses' ? `${style.amountRed}`:`${style.greencolor}`} style={{fontSize:"1.3rem",fontWeight:"bold"}}>$ {item.amount}</span>
                                     <span style={{margin:"0 .8rem"}}><FaEdit style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
-                                    <span><MdDelete style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
+                                    <span><MdDelete onClick={()=>showConfirmBox(item.id)} style={{color:"#ddd",fontSize:"1.1rem",cursor:"pointer"}} /></span>
                                 </div>
                             </li>
                 })}

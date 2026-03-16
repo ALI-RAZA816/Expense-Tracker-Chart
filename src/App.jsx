@@ -6,6 +6,7 @@ import FormSidebar from './components/FormSidebar';
 import Progress from './components/Progress';
 import TransactionRecords from './components/TransactionRecords';
 import {useState} from 'react';
+import ConfirmBox from './components/ConfirmBox';
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
+  const [activeBox, setActiveBox] = useState(false);
+  const [itemIndex, setItemIndex] = useState(null);
+
   // total expenses
   const ExpenseRecord = transaction.filter(item => item.type === 'Expenses');
   const totalExpense = ExpenseRecord.reduce((item, curr) => {
@@ -34,6 +38,7 @@ function App() {
   const addTransactionHandler = (event) =>{
     event.preventDefault();
     const newTransaction = [...transaction,{
+      id:Date.now(),
       description: description,
       amount: Number(amount),
       type: type,
@@ -50,10 +55,32 @@ function App() {
   },0);
   let balance = totalIncome - totalExpense;
 
+
+  // show confrim box
+  
+  const showConfirmBox = (id) => {
+    setActiveBox(true);
+    setItemIndex(id);
+  }
+  
+  // hide confrim box
+  const hideConfirmBox = () => {
+    setActiveBox(false);
+  }
+  
+  const deleteItem = () => {
+    const updatedTransaction = transaction.filter(item => item.id !== itemIndex);
+    setTransaction(updatedTransaction);
+    setActiveBox(false);
+  }
+  
   return (
     <>
-      <Header/>
-      <main>
+      {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
+      <header style={{padding:"0 1rem"}}>
+        <Header/>
+      </header>
+      <main style={{padding:"0 1rem"}}>
         <section className="analyticMain">
           <div className="left">
             <Cards totalExpense = {totalExpense} totalIncome = {totalIncome} balance = {balance}/>
@@ -64,8 +91,8 @@ function App() {
             <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler}/>
           </div>
         </section>
+      <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox}/>
       </main>
-      <TransactionRecords transaction={transaction} type={type}/>
     </>
   )
 }
