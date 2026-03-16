@@ -3,7 +3,7 @@ import style from '../css/ChartContainer.module.css'
 import {BarChart, XAxis, YAxis, CartesianGrid, Bar, Pie, PieChart, Tooltip, Legend} from 'recharts';
 
 
-export default function ChartContainer() {
+export default function ChartContainer({transaction, totalIncome, totalExpense}) {
 
     const [isActive, setActive] = useState(false);
 
@@ -14,16 +14,25 @@ export default function ChartContainer() {
         setActive(true);
     }
     
-    const data01 = [
-      { name: 'Group A', value: 400 },
-      { name: 'Group B', value: 300 },
-      { name: 'Group C', value: 300 },
-      { name: 'Group D', value: 200 },
-    ];
+    // const data01 = transaction
+    // const data01 = [
+    //   { name: 'Group A', value: 400 },
+    //   { name: 'Group A', value: 400 },
+    //   { name: 'Group B', value: 300 },
+    //   { name: 'Group C', value: 300 },
+    //   { name: 'Group D', value: 200 },
+    // ];
 
+    const data01 = transaction.map(item => {
+        return {
+            name : item.category,
+            amount : item.amount
+        }
+    });
+    
     const data = [
-      { name: "expense", value: 5000 },
-      { name: "income", value: 400 }
+      { name: "expense", value: totalExpense },
+      { name: "income", value: totalIncome }
     ];
 
     const isAnimationActive = true;
@@ -45,13 +54,13 @@ export default function ChartContainer() {
                 >
                 <Pie
                     data={data01}
-                    dataKey="value"
+                    dataKey="amount"
                     cx="50%"
                     cy="50%"
                     innerRadius="50%"
                     outerRadius="80%"
                     fill="#82ca9d"
-                    // label
+                    label
                     isAnimationActive={isAnimationActive}
                 />
                 <Legend/>

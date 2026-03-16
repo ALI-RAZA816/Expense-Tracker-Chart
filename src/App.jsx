@@ -84,7 +84,7 @@ function App() {
         <section className="analyticMain">
           <div className="left">
             <Cards totalExpense = {totalExpense} totalIncome = {totalIncome} balance = {balance}/>
-            <ChartContainer/>
+            <ChartContainer transaction={transaction} totalIncome={totalIncome} totalExpense={totalExpense}/>
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
