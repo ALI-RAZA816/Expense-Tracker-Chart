@@ -7,6 +7,7 @@ import Progress from './components/Progress';
 import TransactionRecords from './components/TransactionRecords';
 import {useState} from 'react';
 import ConfirmBox from './components/ConfirmBox';
+import EditForm from './components/EditForm';
 
 function App() {
 
@@ -76,7 +77,6 @@ function App() {
   
   return (
     <>
-      {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
       <header style={{padding:"0 1rem"}}>
         <Header/>
       </header>
@@ -93,6 +93,8 @@ function App() {
         </section>
       <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox}/>
       </main>
+      {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
+      <EditForm/>
     </>
   )
 }

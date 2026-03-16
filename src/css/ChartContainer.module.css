@@ -4,6 +4,7 @@
     padding: 2rem;
     border-radius: 15px;
     background-color:#171C29;
+    overflow: hidden;
     border: 1.5px solid #efefef2f;
 }
 
@@ -55,6 +56,22 @@
 .active{
     background: #7C6AE4 !important;
     box-shadow: 0 0 20px rgba(124, 106, 228,.80)
+}
+
+
+.message{
+    margin-top: 5rem;
+   min-height: 350px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #242937;
+   border-radius: 5px;
+   border: 1px solid #efefef2f;
+}
+
+.message p{
+    color: #efefef;
 }
 
 

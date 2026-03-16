@@ -49,7 +49,7 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
                         </select>
                     </div>}
                 </div>
-                <button type='submit'><FaPlus /><span>Add Transaction</span></button>
+                <button type='submit'><FaPlus style={{marginRight:".5rem"}} /><span>Add Transaction</span></button>
             </form>
         </div>
         <div className={style.filter}>

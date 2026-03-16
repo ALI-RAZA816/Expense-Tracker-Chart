@@ -1,0 +1,106 @@
+.editContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(23, 28, 41,.80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.editForm{
+   background-color: #242937;
+   border: 1px solid #efefef2f;
+    border-radius: 15px;
+    padding:2.5rem 2rem;
+}
+
+.editForm h2{
+    margin-bottom:2rem;
+    background:linear-gradient(135deg, #fff 0%, #193f8d 100%) ;
+    --webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+}
+
+.editForm form input::placeholder{
+    color: #8A94A6;
+    font-weight: 550;
+}
+
+.editForm form input:focus{
+    border-color: #9B87F5;
+    transition: border .50s ease;
+}
+
+.editForm form input{
+    height: 45px;
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    border:1px solid #efefef2f;
+    margin-bottom: 1rem;
+    background: #242937;
+    padding: 0 .8rem;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 450;
+}
+
+.selection{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    margin: 1rem 0;
+}
+
+.selection select{
+    width: 100%;
+    height: 45px;
+    background: #242937;
+    font-size: 14px;
+    border:1px solid #efefef2f;
+    padding: 0 .8rem;
+    font-weight: 450;
+    color: #fff;
+    outline: none;
+    border-radius: 15px;
+}
+
+.selection select:focus{
+    border-color: #9B87F5;
+    transition: border .50s ease;
+}
+
+.selection select option{
+    font-weight: 550;
+    font-size: 13px;
+}
+
+.editForm form button{
+    height: 45px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    display: flex;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 550;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: transform .50s ease;
+    background-color: #00E396;
+    box-shadow:0 0 20px rgba(0, 227, 150, 0.2);
+}
+
+.editForm form button:hover{
+    transform: scale(.99);
+    box-shadow:0 0 40px rgba(0, 227, 150, 0.2);
+}
