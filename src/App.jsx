@@ -19,6 +19,7 @@ function App() {
   // static budget
   let budget = 5000;
   const [transaction, setTransaction] = useState([]);                // records
+  const [filter, setFilter] = useState([]);                          // filter records
   const [type, setType] = useState('Expenses');                      // expenses || income
   const [description, setDescription] = useState('');                // description
   const [amount, setAmount] = useState('');                          // amount value
@@ -29,15 +30,14 @@ function App() {
   const [isdescription, setisdescription] = useState(false);         // handle field if empty
   const [isamount, setisamount] = useState(false);                   // handle field if empty
   const [iscategory, setiscategory] = useState(false);               // handle field if empty
-  const [isActive, setActive] = useState("all");                     // filter | all |income | expenses
-  const [isSuccessful, setSuccessful] = useState(null);             // true | false on successful transaction
-  const [succMsg, setSuccMsg] = useState('Transaction Successful');             // true | false on successful transaction
+  // const [isActive, setActive] = useState('');                     // filter | all |income | expenses
+  const [isSuccessful, setSuccessful] = useState(null);              // true | false on successful transaction
+  const [succMsg, setSuccMsg] = useState('Transaction Successful');  // successful || field is required
 
 
   useEffect(()=>{
    const timer = setTimeout(()=>{
       setSuccessful(null);
-      console.log(setSuccessful(null));
     },3000);
     
     if(activeBox === true || isEdit === true){
@@ -161,12 +161,22 @@ function App() {
     setEditCategory("");
   }
 
+  // const filterButtonHandler = (value) =>{
+  //     setActive(value);
 
-    const filterButtonHandler = (value) =>{
-        setActive(value);
-        
-    }
-
+  //     if(isActive === 'all'){
+  //       console.log(isActive)
+  //       setFilter(transaction);
+  //     }else if(isActive === 'Income'){
+  //       console.log(isActive)
+  //       let filterItem = transaction.filter(item=> item.type === 'Income');
+  //       setFilter(filterItem);
+  //     }else if(isActive === 'Expenses'){
+  //       console.log(isActive)
+  //       let filterItem = transaction.filter(item=> item.type === 'Expenses');
+  //       setFilter(filterItem);
+  //     }
+  // }
 
   return (
     <>
@@ -181,10 +191,10 @@ function App() {
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError} isActive={isActive} setActive = {setActive} filterButtonHandler={filterButtonHandler}/>
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError} />
           </div>
         </section>
-      <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
+      <TransactionRecords filter={filter} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
       </main>
       {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
       {isEdit === true && <EditForm type = {type} changeTypeHandler = {changeTypeHandler} editDescription = {editDescription} editAmount ={editAmount} editCategory = {editCategory} setEditDescription ={setEditDescription} setEditAmount = {setEditAmount} setEditCategory ={setEditCategory} editItem = {editItem} setEdit={setEdit}/>}

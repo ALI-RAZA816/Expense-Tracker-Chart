@@ -4,13 +4,13 @@ import { MdDelete } from "react-icons/md";
 import NoRecords from './NoRecords';
 
 
-export default function TransactionRecords({transaction, showConfirmBox, showEditForm}) {
+export default function TransactionRecords({filter, showConfirmBox, showEditForm}) {
   return (
     <div className={style.transactionContainer}>
         <div className={style.records}>
             <h2>Recent Transactions </h2>
-            {transaction.length ===0 ?<NoRecords/> :<ul>
-                {transaction.map((item, index) => {
+            {filter?.length ===0 ?<NoRecords/> :<ul>
+                {filter?.map((item, index) => {
                     return   <li className={item.type === 'Expenses' ? `${style.red}`:`${style.green}`} key={index} style={{marginBottom:"1rem"}}>
                                 <div>
                                     <p className='title'><span>{item.description}</span></p>
