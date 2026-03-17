@@ -2,7 +2,7 @@ import style from '../css/FormSidebar.module.css';
 import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 
-export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterButtonHandler}) {
+export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterCategory, filterButtonHandler,}) {
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
             <div>
                 <span>Category</span>
                 <div>
-                    <select name="" id="">
+                    <select name="" id="" onChange={(event)=> filterCategory(event.target.value)}>
                         <option value="all">All Categories</option>
                         <optgroup label='Income'>
                             <option value="Salary">Salary</option>

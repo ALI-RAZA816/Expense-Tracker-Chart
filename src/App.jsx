@@ -55,7 +55,7 @@ function App() {
   const [editCategory, setEditCategory] = useState('');
 
   // total expenses
-  const ExpenseRecord = transaction.filter(item => item.type === 'Expenses');
+  const ExpenseRecord = filter.filter(item => item.type === 'Expenses');
   const totalExpense = ExpenseRecord.reduce((item, curr) => {
     return item + curr.amount;
   },0);
@@ -114,7 +114,7 @@ function App() {
   }
 
   // filter income record
-  const IncomeRecord = transaction.filter(item => item.type === 'Income');
+  const IncomeRecord = filter.filter(item => item.type === 'Income');
   const totalIncome = IncomeRecord.reduce((item, curr) => {
     return item + curr.amount;
   },0);
@@ -176,6 +176,59 @@ function App() {
       }
   }
 
+  const filterCategory = (value) => {
+    if(value === 'all'){
+      setFilter(transaction);
+    }else if(value === 'Salary'){
+      let filterItem = transaction.filter(item=> item.category === 'Salary');
+      setFilter(filterItem);
+    }
+    else if(value === 'Freelance'){
+      let filterItem = transaction.filter(item=> item.category === 'Freelance');
+      setFilter(filterItem);
+    }
+    else if(value === 'Investment'){
+      let filterItem = transaction.filter(item=> item.category === 'Investment');
+      setFilter(filterItem);
+    }
+    else if(value === 'Other'){
+      let filterItem = transaction.filter(item=> item.category === 'Other');
+      setFilter(filterItem);
+    }
+    else if(value === 'Housing'){
+      let filterItem = transaction.filter(item=> item.category === 'Housing');
+      setFilter(filterItem);
+    }
+    else if(value === 'Transporation'){
+      let filterItem = transaction.filter(item=> item.category === 'Transporation');
+      setFilter(filterItem);
+    }
+    else if(value === 'Food'){
+      let filterItem = transaction.filter(item=> item.category === 'Food');
+      setFilter(filterItem);
+    }
+    else if(value === 'Utilities'){
+      let filterItem = transaction.filter(item=> item.category === 'Utilities');
+      setFilter(filterItem);
+    }
+    else if(value === 'Entertainment'){
+      let filterItem = transaction.filter(item=> item.category === 'Entertainment');
+      setFilter(filterItem);
+    }
+    else if(value === 'Healthcare'){
+      let filterItem = transaction.filter(item=> item.category === 'Healthcare');
+      setFilter(filterItem);
+    }
+    else if(value === 'Shopping'){
+      let filterItem = transaction.filter(item=> item.category === 'Shopping');
+      setFilter(filterItem);
+    }
+    else if(value === 'Education'){
+      let filterItem = transaction.filter(item=> item.category === 'Education');
+      setFilter(filterItem);
+    }
+  }
+
   return (
     <>
       <header style={{padding:"0 1rem"}}>
@@ -185,11 +238,11 @@ function App() {
         <section className="analyticMain">
           <div className="left">
             <Cards totalExpense = {totalExpense} totalIncome = {totalIncome} balance = {balance}/>
-            <ChartContainer transaction={transaction} totalIncome={totalIncome} totalExpense={totalExpense}/>
+            <ChartContainer filter={filter} totalIncome={totalIncome} totalExpense={totalExpense}/>
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} isActive={isActive} removeError={removeError} filterButtonHandler={filterButtonHandler} />
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} isActive={isActive} removeError={removeError} filterButtonHandler={filterButtonHandler} filterCategory={filterCategory} />
           </div>
         </section>
       <TransactionRecords filter={filter} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
