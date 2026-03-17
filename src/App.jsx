@@ -17,14 +17,17 @@ function App() {
 
   // static budget
   let budget = 5000;
-  const [transaction, setTransaction] = useState([]);
-  const [type, setType] = useState('Expenses'); // expenses || income
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
-  const [activeBox, setActiveBox] = useState(false);
-  const [itemIndex, setItemIndex] = useState(null);
-  const [isEdit, setEdit] = useState(false);
+  const [transaction, setTransaction] = useState([]); // records
+  const [type, setType] = useState('Expenses');       // expenses || income
+  const [description, setDescription] = useState(''); // description
+  const [amount, setAmount] = useState('');           // amount value
+  const [category, setCategory] = useState('');       // category value
+  const [activeBox, setActiveBox] = useState(false);  // show and hide conform box for deletion
+  const [itemIndex, setItemIndex] = useState(null);   // handle item index to delete or edit
+  const [isEdit, setEdit] = useState(false);          // true | false | hide and show eidt form 
+  const [isdescription, setisdescription] = useState(false);         // handle field if empty
+  const [isamount, setisamount] = useState(false);         // handle field if empty
+  const [iscategory, setiscategory] = useState(false);         // handle field if empty
 
   useEffect(()=>{
     if(activeBox === true || isEdit === true){
@@ -32,7 +35,7 @@ function App() {
     }else{
       document.body.classList.remove('close');
     }
-  },[activeBox, isEdit])
+  },[activeBox, isEdit]);
 
   // edit states
   const [editDescription, setEditDescription] = useState('');
@@ -54,6 +57,19 @@ function App() {
   // add transactions
   const addTransactionHandler = (event) =>{
     event.preventDefault();
+    if(!description || description === ' '){
+      setisdescription(true);
+      return;
+    }
+    if(!amount || amount === ' '){
+      setisamount(true);
+      return;
+    }
+
+    if(!category || category === ' '){
+      setiscategory(true);
+      return;
+    }
     const newTransaction = [...transaction,{
       id:Date.now(),
       description: description,
@@ -67,7 +83,13 @@ function App() {
     setAmount("");
     setType("Expenses");
     setCategory("");
+  }
 
+  // remove error msg on focus
+  const removeError = () => {
+    setisdescription(false);
+    setisamount(false);
+    setiscategory(false);
   }
 
   // filter income record
@@ -133,7 +155,7 @@ function App() {
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler}/>
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError}/>
           </div>
         </section>
       <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>

@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 import { useState } from 'react';
 
-export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler}) {
+export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError}) {
 
 
     const [isActive, setActive] = useState("all");
@@ -16,17 +16,17 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
      <div className={style.transaction}>
             <h2>Add Transaction</h2>
             <form action='' onSubmit={addTransactionHandler}>
-                <input type="text" onInput={(event) => setDescription(event.target.value)} value={description} placeholder='Description' />
-                <input type="number" onInput={(event) => setAmount(event.target.value)} value={amount} placeholder='Amount' />
+                <input type="text" className={`${isdescription === true ? `${style.error}`: undefined}`} onInput={(event) => setDescription(event.target.value)} value={description} placeholder='Description' onFocus={removeError} />
+                <input type="number" className={`${isamount === true ? `${style.error}`: undefined}`} onInput={(event) => setAmount(event.target.value)} value={amount} placeholder='Amount' onFocus={removeError} />
                 <div className={style.selection} >
                     <div style={{width:"100%"}}>
-                        <select name="" id="" value={type} onChange={(event)=> changeTypeHandler(event.target.value)} >
+                        <select name="" id="" value={type} onChange={(event)=> changeTypeHandler(event.target.value)}  >
                             <option value="Expenses">Expense</option>
                             <option value="Income">Income</option>
                         </select>
                     </div>
                     {type === "Expenses" ?<div style={{width:"100%"}}>
-                        <select name="" id="" onChange={(event)=> setCategory(event.target.value)} value={category}>
+                        <select name="" id="" className={`${iscategory === true ? `${style.error}`: undefined}`} onFocus={removeError} onChange={(event)=> setCategory(event.target.value)} value={category}>
                             <option value="">Select catag</option>
                             <option value="Housing">Housing</option>
                             <option value="Transporation">Transporation</option>
@@ -40,7 +40,7 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
                         </select>
                     </div> :
                     <div style={{width:"100%"}}>
-                        <select name="" id="" onChange={(event)=> setCategory(event.target.value)} value={category}>
+                        <select name="" id="" className={`${iscategory === true ? `${style.error}`: undefined}`} onFocus={removeError} onChange={(event)=> setCategory(event.target.value)} value={category}>
                             <option value="">Select catag</option>
                             <option value="Salary">Salary</option>
                             <option value="Freelance">Freelance</option>

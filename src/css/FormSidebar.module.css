@@ -39,6 +39,13 @@
     font-weight: 450;
 }
 
+
+/* custom class for empty field  */
+.error{
+    color:#e72c55 !important;
+    border-color:#e72c55 !important;
+}
+
 .selection{
     width: 100%;
     display: flex;
