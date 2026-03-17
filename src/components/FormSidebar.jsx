@@ -2,7 +2,7 @@ import style from '../css/FormSidebar.module.css';
 import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 
-export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError}) {
+export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterButtonHandler}) {
 
   return (
     <>
@@ -50,9 +50,9 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
             <div>
                 <span>Type</span>
                 <div style={{display:"flex",gap:"20px",margin:"2rem 0 3rem 0"}}>
-                    <button>All</button>
-                    <button>Income</button>
-                    <button>Expenses</button>
+                    <button className={isActive === 'all' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('all')}>All</button>
+                    <button className={isActive === 'Income' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('Income')}>Income</button>
+                    <button className={isActive === 'Expenses' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('Expenses')}>Expenses</button>
                 </div>
             </div>
             <div>

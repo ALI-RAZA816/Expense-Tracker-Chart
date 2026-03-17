@@ -1,9 +1,12 @@
 import { FaPlus } from "react-icons/fa6";
 import style from '../css/EditForm.module.css';
+import { HiOutlineXMark } from "react-icons/hi2";
 
-export default function ConfirmBox({type, changeTypeHandler, setEdit, editDescription, editAmount, editCategory, setEditDescription ,setEditAmount, setEditCategory, editItem}) {
+
+export default function ConfirmBox({type, changeTypeHandler,setEdit, editDescription, editAmount, editCategory, setEditDescription ,setEditAmount, setEditCategory, editItem}) {
   return (
-    <div className={style.editContainer} onClick={()=> setEdit(false)}>
+    <div className={style.editContainer}>
+        <HiOutlineXMark onClick={()=>setEdit(false)} style={{position:"absolute",top:"15px",right:"15px",color:"#fff",fontSize:"2rem",cursor:"pointer"}} />
         <div className={style.editForm}>
         <h2>Update Transaction</h2>
             <form action='' onSubmit={editItem}>

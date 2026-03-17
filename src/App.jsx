@@ -30,12 +30,13 @@ function App() {
   const [isdescription, setisdescription] = useState(false);         // handle field if empty
   const [isamount, setisamount] = useState(false);                   // handle field if empty
   const [iscategory, setiscategory] = useState(false);               // handle field if empty
-  // const [isActive, setActive] = useState('');                     // filter | all |income | expenses
+  const [isActive, setActive] = useState('all');                     // filter | all |income | expenses
   const [isSuccessful, setSuccessful] = useState(null);              // true | false on successful transaction
   const [succMsg, setSuccMsg] = useState('Transaction Successful');  // successful || field is required
 
 
   useEffect(()=>{
+    setFilter(transaction);
    const timer = setTimeout(()=>{
       setSuccessful(null);
     },3000);
@@ -161,22 +162,19 @@ function App() {
     setEditCategory("");
   }
 
-  // const filterButtonHandler = (value) =>{
-  //     setActive(value);
+  const filterButtonHandler = (value) =>{
+      setActive(value);
 
-  //     if(isActive === 'all'){
-  //       console.log(isActive)
-  //       setFilter(transaction);
-  //     }else if(isActive === 'Income'){
-  //       console.log(isActive)
-  //       let filterItem = transaction.filter(item=> item.type === 'Income');
-  //       setFilter(filterItem);
-  //     }else if(isActive === 'Expenses'){
-  //       console.log(isActive)
-  //       let filterItem = transaction.filter(item=> item.type === 'Expenses');
-  //       setFilter(filterItem);
-  //     }
-  // }
+      if(value === 'all'){
+        setFilter(transaction);
+      }else if(value === 'Income'){
+        let filterItem = transaction.filter(item=> item.type === 'Income');
+        setFilter(filterItem);
+      }else if(value === 'Expenses'){
+        let filterItem = transaction.filter(item=> item.type === 'Expenses');
+        setFilter(filterItem);
+      }
+  }
 
   return (
     <>
@@ -191,7 +189,7 @@ function App() {
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError} />
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} isActive={isActive} removeError={removeError} filterButtonHandler={filterButtonHandler} />
           </div>
         </section>
       <TransactionRecords filter={filter} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
