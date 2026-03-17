@@ -1,9 +1,9 @@
 import { FaPlus } from "react-icons/fa6";
 import style from '../css/EditForm.module.css';
 
-export default function ConfirmBox({type, changeTypeHandler, editDescription, editAmount, editCategory, setEditDescription ,setEditAmount, setEditCategory, editItem}) {
+export default function ConfirmBox({type, changeTypeHandler, setEdit, editDescription, editAmount, editCategory, setEditDescription ,setEditAmount, setEditCategory, editItem}) {
   return (
-    <div className={style.editContainer}>
+    <div className={style.editContainer} onClick={()=> setEdit(false)}>
         <div className={style.editForm}>
         <h2>Update Transaction</h2>
             <form action='' onSubmit={editItem}>

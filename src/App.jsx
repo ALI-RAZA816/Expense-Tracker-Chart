@@ -8,6 +8,7 @@ import TransactionRecords from './components/TransactionRecords';
 import {useEffect, useState} from 'react';
 import ConfirmBox from './components/ConfirmBox';
 import EditForm from './components/EditForm';
+import Sussessful from './components/Sussessful';
 
 function App() {
 
@@ -17,25 +18,35 @@ function App() {
 
   // static budget
   let budget = 5000;
-  const [transaction, setTransaction] = useState([]); // records
-  const [type, setType] = useState('Expenses');       // expenses || income
-  const [description, setDescription] = useState(''); // description
-  const [amount, setAmount] = useState('');           // amount value
-  const [category, setCategory] = useState('');       // category value
-  const [activeBox, setActiveBox] = useState(false);  // show and hide conform box for deletion
-  const [itemIndex, setItemIndex] = useState(null);   // handle item index to delete or edit
-  const [isEdit, setEdit] = useState(false);          // true | false | hide and show eidt form 
+  const [transaction, setTransaction] = useState([]);                // records
+  const [type, setType] = useState('Expenses');                      // expenses || income
+  const [description, setDescription] = useState('');                // description
+  const [amount, setAmount] = useState('');                          // amount value
+  const [category, setCategory] = useState('');                      // category value
+  const [activeBox, setActiveBox] = useState(false);                 // show and hide conform box for deletion
+  const [itemIndex, setItemIndex] = useState(null);                  // handle item index to delete or edit
+  const [isEdit, setEdit] = useState(false);                         // true | false | hide and show eidt form 
   const [isdescription, setisdescription] = useState(false);         // handle field if empty
-  const [isamount, setisamount] = useState(false);         // handle field if empty
-  const [iscategory, setiscategory] = useState(false);         // handle field if empty
+  const [isamount, setisamount] = useState(false);                   // handle field if empty
+  const [iscategory, setiscategory] = useState(false);               // handle field if empty
+  const [isActive, setActive] = useState("all");                     // filter | all |income | expenses
+  const [isSuccessful, setSuccessful] = useState(null);             // true | false on successful transaction
+  const [succMsg, setSuccMsg] = useState('Transaction Successful');             // true | false on successful transaction
+
 
   useEffect(()=>{
+   const timer = setTimeout(()=>{
+      setSuccessful(null);
+      console.log(setSuccessful(null));
+    },3000);
+    
     if(activeBox === true || isEdit === true){
       document.body.classList.add('close');
     }else{
       document.body.classList.remove('close');
     }
-  },[activeBox, isEdit]);
+    return ()=> clearTimeout(timer);
+  },[activeBox, isEdit, isSuccessful]);
 
   // edit states
   const [editDescription, setEditDescription] = useState('');
@@ -59,15 +70,21 @@ function App() {
     event.preventDefault();
     if(!description || description === ' '){
       setisdescription(true);
+      setSuccessful(false);
+      setSuccMsg("Field is required");
       return;
     }
     if(!amount || amount === ' '){
       setisamount(true);
+      setSuccessful(false);
+      setSuccMsg("Field is required");
       return;
     }
-
+    
     if(!category || category === ' '){
       setiscategory(true);
+      setSuccessful(false);
+      setSuccMsg("Field is required");
       return;
     }
     const newTransaction = [...transaction,{
@@ -83,13 +100,16 @@ function App() {
     setAmount("");
     setType("Expenses");
     setCategory("");
+    setSuccessful(true);
+    setSuccMsg("Transaction Successful");
+
   }
 
   // remove error msg on focus
   const removeError = () => {
-    setisdescription(false);
-    setisamount(false);
-    setiscategory(false);
+      setisdescription(false);
+      setisamount(false);
+      setiscategory(false);
   }
 
   // filter income record
@@ -142,6 +162,12 @@ function App() {
   }
 
 
+    const filterButtonHandler = (value) =>{
+        setActive(value);
+        
+    }
+
+
   return (
     <>
       <header style={{padding:"0 1rem"}}>
@@ -155,15 +181,15 @@ function App() {
             <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError}/>
+            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} removeError={removeError} isActive={isActive} setActive = {setActive} filterButtonHandler={filterButtonHandler}/>
           </div>
         </section>
       <TransactionRecords transaction={transaction} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
       </main>
       {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
-      {isEdit === true && <EditForm type = {type} changeTypeHandler = {changeTypeHandler} editDescription = {editDescription} editAmount ={editAmount} editCategory = {editCategory} setEditDescription ={setEditDescription} setEditAmount = {setEditAmount} setEditCategory ={setEditCategory} editItem = {editItem} />}
+      {isEdit === true && <EditForm type = {type} changeTypeHandler = {changeTypeHandler} editDescription = {editDescription} editAmount ={editAmount} editCategory = {editCategory} setEditDescription ={setEditDescription} setEditAmount = {setEditAmount} setEditCategory ={setEditCategory} editItem = {editItem} setEdit={setEdit}/>}
+      <Sussessful succMsg={succMsg} isSuccessful={isSuccessful}/>
     </>
   )
 }
-
 export default App

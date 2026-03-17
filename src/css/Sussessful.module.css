@@ -1,0 +1,28 @@
+.message{
+    position: fixed;
+    top:-5%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 40px; */
+    /* width: max-content; */
+    padding: 1rem 2rem;
+    border: 1.5px solid #efefef5b;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    background-color:#242937;
+    color: #00E396;
+    transition: top .50s ease-in-out;
+}
+
+.showSuccess{
+    top: 8%;
+}
+
+
+.showError{
+    top:8% !important;
+    color:#e72c55 !important;
+    border-color: #e72c55 !important;
+}
