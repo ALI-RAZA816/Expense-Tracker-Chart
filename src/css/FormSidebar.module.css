@@ -141,3 +141,22 @@
     background: #7C6AE4 !important;
     box-shadow: 0 0 15px #9B87F5;
 }
+
+@media screen and (max-width:992px) {
+    .filter{
+        height: 100% !important;  
+        width: 50% !important;
+    }
+}
+@media screen and (max-width:768px) {
+    .transaction,
+    .filter{
+        height: 100% !important;  
+        width: 100% !important;
+    }
+
+    .buttons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

@@ -49,7 +49,7 @@ export default function FormSidebar({type,changeTypeHandler,setDescription, desc
             <h2><FaFilter style={{color:"#9B87F5"}} />Filters</h2>
             <div>
                 <span>Type</span>
-                <div style={{display:"flex",gap:"20px",margin:"2rem 0 3rem 0"}}>
+                <div className={style.buttons} style={{display:"flex",gap:"20px",margin:"2rem 0 3rem 0"}}>
                     <button className={isActive === 'all' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('all')}>All</button>
                     <button className={isActive === 'Income' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('Income')}>Income</button>
                     <button className={isActive === 'Expenses' ? `${style.active}` : undefined} onClick={()=> filterButtonHandler('Expenses')}>Expenses</button>

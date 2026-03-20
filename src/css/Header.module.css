@@ -10,6 +10,19 @@
     padding: 0 1.5rem;
 }
 
+@media screen and (max-width:668px) {
+    .header{
+        flex-direction: column;
+        height: 120px;
+        justify-content: center;
+    }
+    .right{
+        display: flex;
+        margin-top: 1rem;
+    }
+}
+
+
 .left h1{
     background: linear-gradient(135deg, #f7f7f7 0%, #00C689 100%);
     --webkit-background-clip: text;

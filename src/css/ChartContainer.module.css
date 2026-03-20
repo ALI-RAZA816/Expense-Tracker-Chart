@@ -8,6 +8,33 @@
     border: 1.5px solid #efefef2f;
 }
 
+
+@media screen and (max-width:1200px) {
+  .chartContainer{
+    grid-column:1/4 ;
+    grid-row: 3/6;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .chartContainer{
+    grid-row: 4/7;
+  }
+  .tophead{
+    flex-direction: column;
+  }
+
+  .tophead > h3{
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .message{
+    margin-top: 2.3rem !important;
+  }
+}
+
+
 .tophead{
     display: flex;
     align-items: center;
