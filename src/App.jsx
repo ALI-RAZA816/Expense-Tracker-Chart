@@ -16,10 +16,10 @@ function App() {
   return (
     <>
     <AppContextProvider>
-      <header style={{padding:"0 1rem"}}>
+      <header style={{padding:"0 .5rem"}}>
         <Header/>
       </header>
-      <main style={{padding:"0 1rem"}}>
+      <main style={{padding:"0 .5rem"}}>
         <section className="analyticMain">
           <div className="left">
             <Cards/>
