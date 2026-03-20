@@ -7,7 +7,7 @@ import { AppContext } from '../context/context';
 export default function FormSidebar() {
     
     
-    const {type, changeTypeHandler, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterCategory, filterButtonHandler} = useContext(AppContext);
+    const {type, changeTypeHandler, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterCategory, filterButtonHandler, setDescription} = useContext(AppContext);
 
   return (
     <>
