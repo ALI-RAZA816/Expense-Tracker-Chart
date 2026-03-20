@@ -1,9 +1,14 @@
+import { useContext } from 'react';
 import style from '../css/Sussessful.module.css';
 import { IoMdCheckmark } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { AppContext } from '../context/context';
 
 
-export default function Sussessful({succMsg ,isSuccessful}) {
+export default function Sussessful() {
+
+  const {succMsg, isSuccessful} = useContext(AppContext);
+
   return (
     <>
         <div className={`${style.message} ${isSuccessful === true ? `${style.showSuccess}` : undefined}`}>

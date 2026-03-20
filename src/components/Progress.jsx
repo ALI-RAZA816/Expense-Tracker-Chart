@@ -1,9 +1,13 @@
 import { FaTrophy } from "react-icons/fa";
 import { CiWarning } from "react-icons/ci";
 import style from '../css/Progress.module.css';
+import { useContext } from "react";
+import { AppContext } from "../context/context";
 
 
-export default function Progress({budget ,totalExpense, progress}) {
+export default function Progress() {
+
+  const {budget, totalExpense, progress} = useContext(AppContext);
 
   return (
     <div className={style.progress}>

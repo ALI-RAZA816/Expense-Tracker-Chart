@@ -2,9 +2,14 @@ import style from '../css/TransactionRecords.module.css'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import NoRecords from './NoRecords';
+import { useContext } from 'react';
+import { AppContext } from '../context/context';
 
 
-export default function TransactionRecords({filter, showConfirmBox, showEditForm}) {
+export default function TransactionRecords() {
+
+    const {filter, showConfirmBox, showEditForm} = useContext(AppContext);
+
   return (
     <div className={style.transactionContainer}>
         <div className={style.records}>

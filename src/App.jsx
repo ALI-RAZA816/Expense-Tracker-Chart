@@ -9,6 +9,7 @@ import {useEffect, useState} from 'react';
 import ConfirmBox from './components/ConfirmBox';
 import EditForm from './components/EditForm';
 import Sussessful from './components/Sussessful';
+import { AppContext } from './context/context';
 
 function App() {
 
@@ -231,25 +232,65 @@ function App() {
 
   return (
     <>
+    <AppContext.Provider value={{
+      totalIncome,
+      balance,
+      filter,
+      totalExpense,
+      budget,
+      progress,
+      type,
+      setDescription,
+      description,
+      amount,
+      setAmount,
+      category,
+      setCategory,
+      addTransactionHandler,
+      isdescription,
+      isamount, 
+      iscategory, 
+      isActive, 
+      removeError, 
+      filterButtonHandler, 
+      filterCategory, 
+      showConfirmBox, 
+      showEditForm, 
+      deleteItem, 
+      hideConfirmBox, 
+      changeTypeHandler, 
+      editDescription, 
+      editAmount,
+      editCategory, 
+      setEditDescription, 
+      setEditAmount, 
+      setEditCategory, 
+      editItem, 
+      setEdit, 
+      succMsg, 
+      isSuccessful
+
+    }}>
       <header style={{padding:"0 1rem"}}>
         <Header/>
       </header>
       <main style={{padding:"0 1rem"}}>
         <section className="analyticMain">
           <div className="left">
-            <Cards totalExpense = {totalExpense} totalIncome = {totalIncome} balance = {balance}/>
-            <ChartContainer filter={filter} totalIncome={totalIncome} totalExpense={totalExpense}/>
-            <Progress budget = {budget} totalExpense = {totalExpense} progress = {progress}/>
+            <Cards/>
+            <ChartContainer/>
+            <Progress/>
           </div>
           <div className="right">
-            <FormSidebar type = {type} changeTypeHandler = {changeTypeHandler} setDescription={setDescription} description={description} amount ={amount} setAmount={setAmount} category = {category}  setCategory ={setCategory} addTransactionHandler ={addTransactionHandler} isdescription={isdescription} isamount={isamount} iscategory={iscategory} isActive={isActive} removeError={removeError} filterButtonHandler={filterButtonHandler} filterCategory={filterCategory} />
+            <FormSidebar/>
           </div>
         </section>
-      <TransactionRecords filter={filter} type={type} showConfirmBox={showConfirmBox} showEditForm={showEditForm}/>
+      <TransactionRecords/>
       </main>
-      {activeBox === true && <ConfirmBox deleteItem={deleteItem} hideConfirmBox={hideConfirmBox} /> }
-      {isEdit === true && <EditForm type = {type} changeTypeHandler = {changeTypeHandler} editDescription = {editDescription} editAmount ={editAmount} editCategory = {editCategory} setEditDescription ={setEditDescription} setEditAmount = {setEditAmount} setEditCategory ={setEditCategory} editItem = {editItem} setEdit={setEdit}/>}
-      <Sussessful succMsg={succMsg} isSuccessful={isSuccessful}/>
+      {activeBox === true && <ConfirmBox/> }
+      {isEdit === true && <EditForm/>}
+      <Sussessful/>
+      </AppContext.Provider>
     </>
   )
 }

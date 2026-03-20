@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import style from '../css/ChartContainer.module.css'
 import {BarChart, XAxis, YAxis, CartesianGrid, Bar, Pie, PieChart, Tooltip, Legend} from 'recharts';
+import { AppContext } from '../context/context';
 
 
-export default function ChartContainer({filter, totalIncome, totalExpense}) {
+export default function ChartContainer() {
+
+    const {filter, totalIncome, totalExpense} = useContext(AppContext);
 
     const [isActive, setActive] = useState(false);
 

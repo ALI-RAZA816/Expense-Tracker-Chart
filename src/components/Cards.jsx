@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import style from '../css/Cards.module.css';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { FaScaleBalanced } from "react-icons/fa6";
+import { AppContext } from '../context/context';
 
-export default function Cards({totalExpense, totalIncome, balance}) {
+export default function Cards() {
+
+    const {totalExpense,totalIncome,balance } = useContext(AppContext);
   return (
     <>
       <div className={style.amountBox}>

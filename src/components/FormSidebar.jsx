@@ -1,8 +1,13 @@
 import style from '../css/FormSidebar.module.css';
 import { FaPlus } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
+import { useContext } from 'react';
+import { AppContext } from '../context/context';
 
-export default function FormSidebar({type,changeTypeHandler,setDescription, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterCategory, filterButtonHandler,}) {
+export default function FormSidebar() {
+    
+    
+    const {type, changeTypeHandler, description, amount, setAmount, category, setCategory, addTransactionHandler, isdescription, isamount, iscategory, removeError, isActive, filterCategory, filterButtonHandler} = useContext(AppContext);
 
   return (
     <>

@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import style from '../css/ConfirmBox.module.css';
+import { AppContext } from '../context/context';
 
-export default function ConfirmBox({deleteItem, hideConfirmBox}) {
+export default function ConfirmBox() {
+  
+  const {deleteItem, hideConfirmBox}= useContext(AppContext);
+  
+  
   return (
     <div className={`${style.boxContainer}`} onClick={hideConfirmBox}>
         <div className={style.confirmBox}>
