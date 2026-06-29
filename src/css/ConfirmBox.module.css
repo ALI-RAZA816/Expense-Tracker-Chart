@@ -10,11 +10,13 @@
     top: 0;
     left: 0;
     display: flex;
+    padding: 0 1rem;
 }
 
 .confirmBox{
     min-height: 160px;
-    min-width:550px;
+    width:100%;
+    max-width:550px;
     border-radius: 5px;
     display: flex;
     padding:1rem 1rem;
